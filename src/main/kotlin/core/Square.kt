@@ -52,6 +52,18 @@ enum class Square {
     A7, B7, C7, D7, E7, F7, G7, H7,
     A8, B8, C8, D8, E8, F8, G8, H8;
 
+    fun move(
+        columnOffset: Int,
+        rowOffset: Int,
+    ): Square? {
+        val newColumnIndex = column.index + columnOffset
+        val newRowIndex = row.index + rowOffset
+        return when {
+            newColumnIndex in 0..7 && newRowIndex in 0..7 -> allSquares[newRowIndex * 8 + newColumnIndex]
+            else -> null
+        }
+    }
+
     val column: Column
         get() = Column.allColumns[ordinal % 8]
 

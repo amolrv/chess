@@ -4,6 +4,11 @@ sealed interface Piece {
     val side: Side
     val symbol: String
 
+    fun passibleMoves(
+        board: Board,
+        square: Square,
+    ): List<Square>
+
     companion object {
         private val allPiece: Map<String, Array<Piece>>
             get() =
