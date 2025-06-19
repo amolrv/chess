@@ -10,7 +10,7 @@ This project is a Kotlin-based chess application that determines possible moves 
 
 1. **Clone the repository:**
    ```sh
-   git clone <repo-url>
+   git clone git@github.com:amolrv/chess.git
    cd chess
    ```
 
