@@ -9,13 +9,16 @@ fun main(args: Array<String>) {
     println("Args: " + args.joinToString(", "))
 
     if (args.size < 2) {
-        println("Usage: Please provide piece type and position (e.g., 'Pawn G1')")
+        println("Usage: Please provide piece type and square (e.g., 'Pawn G1')")
         return
     }
+
     val defaultSide = Side.WHITE
-    val piece = args[0].let { Piece.make(it, defaultSide) }
-    val position = args[1].let { Square.fromNotation(it) }
-    val board = Board()
-    val possibleMoves = piece.passibleMoves(board, position)
-        println("Possible moves for $piece at $position: $possibleMoves")
+    runCatching {
+        val piece = args[0].let { Piece.make(it, defaultSide) }
+        val square = args[1].let { Square.fromNotation(it) }
+        val board = Board()
+        val possibleMoves = piece.passibleMoves(board, square)
+        println("Possible moves for $piece at $square: $possibleMoves")
+    }.onFailure { println("Error: ${it.message}") }
 }
