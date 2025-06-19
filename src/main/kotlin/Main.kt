@@ -18,7 +18,7 @@ fun main(args: Array<String>) {
         val piece = args[0].let { Piece.make(it, defaultSide) }
         val square = args[1].let { Square.fromNotation(it) }
         val board = Board()
-        val possibleMoves = piece.passibleMoves(board, square)
-        println("Possible moves for $piece at $square: $possibleMoves")
+        val possibleMoves = piece.passibleMoves(board, square).joinToString(", ") { it.name }
+        println("Possible moves for ${piece.javaClass.simpleName} at $square: $possibleMoves")
     }.onFailure { println("Error: ${it.message}") }
 }
