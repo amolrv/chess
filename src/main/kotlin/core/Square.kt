@@ -38,7 +38,7 @@ enum class Row(val notation: Int) {
     companion object {
         val allRows: Array<Row> = entries.toTypedArray()
 
-        fun fromNotation(notation: Int): Row = valueOf(notation.toString())
+        fun fromNotation(notation: Int): Row = valueOf("R$notation")
     }
 }
 
